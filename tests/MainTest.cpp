@@ -1,5 +1,5 @@
-#include "banking/Account.h"
-#include "banking/Transaction.h"
+#include "../banking/Account.h"
+#include "../banking/Transaction.h"
 
 #include "gmock/gmock.h"
 #include "gtest/gtest.h"
