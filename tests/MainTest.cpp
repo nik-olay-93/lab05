@@ -16,10 +16,7 @@ TEST(Acount, Init) {
   EXPECT_EQ(test.id(), 1);
 }
 
-class MockTransaction : public Transaction {
-public:
-  MOCK_METHOD(void, SaveToDataBase, (Account& from, Account& to, int sum), (override));
-};
+class MockTransaction : public Transaction {};
 
 TEST(Account, GetBalance) {
   MockAccount acc(1, 100);
@@ -53,10 +50,4 @@ TEST(Transaction, Make) {
   EXPECT_THROW(tr.Make(from_acc, from_acc, 0), std::logic_error);
   EXPECT_THROW(tr.Make(from_acc, to_acc, 0), std::logic_error);
   EXPECT_THROW(tr.Make(from_acc, to_acc, -5), std::invalid_argument);
-}
-
-TEST(Transaction, SaveToDataBase) {
-  MockAccount from_acc(15, 17650);
-  MockAccount to_acc(13, 18435);
-  MockTransaction tr;
 }
